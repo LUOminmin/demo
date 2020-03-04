@@ -1,0 +1,47 @@
+<div class="home_body" id="homeBody" v-touch:tap="judgeScroll">
+    <div class="home_body_top" v-touch:tap="onWeekTurnOverTap">
+        <div class="home_body_sale">
+            <div class="sale_text">
+                营业额({{type | trans-time}})
+            </div>
+            <div class="sale_price">
+                {{store_total_sale_price | trans-price-before }}
+            </div>
+        </div>
+    </div>
+
+    <div class="home_float">
+        <div v-for="(index,item) in showList" class="float_item" v-touch:tap="jumpUrl('showList',index)">
+            <div class="item_title">{{item.title}}</div>
+            <div class="item_value" v-show="item.value">{{$data[item.value] | trans-price-before item.noDeal}}</div>
+            <!-- <div class="item_value" :class="{{'value_'+item.textColor}}">5900.00</div> -->
+        </div>
+    </div>
+    <div class="dialy_manage" ref="todo">
+        <div class="manage_title">日常管理</div>
+        <div class="manage_content">
+            <div v-for="(index,item) in manageList" class="content_item" v-touch:tap="jumpUrl('manageList',index)">
+                <div class="content_icon" :style="{backgroundImage: item.icon}"><i :style="ifCount(item.count)" class="count">{{$data[item.count]>99?99:$data[item.count]}}</i></div>
+                <div class="content_title">{{item.title}}</div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="home_tab" :class="isFixScroll?'is_fix':''" id="homeTab" v-if="tableList.length>0">
+        <div v-for="(index,item) in tableList" class="tab_item" :class="activeTab == index?'tab_active':''" v-touch:tap="tabSelect(index)">{{item.parent_name}}
+            <div class="active_line" v-show="activeTab == index"></div>
+        </div>
+    </div>
+    <div class="home_position" v-if="isFixScroll"></div> -->
+    <div class="table_box" v-if="tableList.length>0">
+        <div v-for="(index,item) in tableList" class="home_table" :id="'id'+item.parent_id">
+            <div class="table_title">{{item.parent_name}}</div>
+            <div v-for="value in item.obj" class="table_content">
+                <div v-for="(index,child) in value" class="table_item" v-touch:tap="childClick(child)">
+                    <div class="child_icon" :style="{backgroundImage: 'url('+child.task_config_menu_pic+')'}"></div>
+                    <div class="child_title">{{child.task_config_menu_name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="remind_space" v-if="tableList.length>0"></div>
+</div>

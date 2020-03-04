@@ -1,0 +1,62 @@
+<widget id="A6915221880328" version="0.0.1">
+    <name>千牵商城助手</name>
+    <description>
+        Example For APICloud.
+    </description>
+    <author email="developer@apicloud.com" href="http://www.apicloud.com">
+        qqbibi
+    </author>
+    <content src="./dist/root.html" />
+    <access origin="*" />
+
+    <feature name="aliPush">
+        <param name="AppKey_iOS" value="24965463"/>
+        <param name="AppSecret_iOS" value="a1b5de148607b0cea04a06d077c78b00"/>
+        <param name="AppKey_Android" value="24968206"/>
+        <param name="AppSecret_Android" value="da2b6d966f368c78d2f62568b7114b87"/>
+        <param name="XmAppID" value="2882303761517834508"/>
+        <param name="XmAppKey" value="phu3ZTVBKmfZksEh5EB7oA=="/>
+    </feature> 
+
+    <feature name="qq">
+        <param name="urlScheme" value="tencent1105570159" />
+        <param name="apiKey" value="1105570159" />
+    </feature>
+    <feature name="wx">
+        <param name="urlScheme" value="wxbdb8e68b08e4eb8e"/>
+        <param name="apiKey" value="wxbdb8e68b08e4eb8e"/>
+        <param name="apiSecret" value="caa4c233357ace8fb03fa6f249a40630"/>
+    </feature>
+    <feature name="TalkingData">
+        <param name="logEnable" value="false" />
+        <param name="exceptionReportEnabled" value="true" />
+        <param name="channel" value="AppStore" />
+    </feature>
+
+    <preference name="pageBounce" value="false" />
+    <preference name="appBackground" value="#f6f6f6" />
+    <preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
+    <preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>
+    <preference name="hScrollBarEnabled" value="true" />
+    <preference name="vScrollBarEnabled" value="true" />
+    <preference name="autoLaunch" value="true" />
+    <preference name="fullScreen" value="false" />
+    <preference name="autoUpdate" value="true" />
+    <preference name="smartUpdate" value="true" />
+    <preference name="debug" value="true" />
+    <preference name="statusBarAppearance" value="true" />
+    <preference name="backgroundMode" value="remote-notification"/>
+    <preference name="softInputMode" value="resize"/>
+    <preference name="iOS7StatusBarAppearance" value="true"/>
+    <preference name="urlScheme" value="bosshelp" />
+    <preference name="font" value="" />
+
+    <permission name="readPhoneState" />
+    <permission name="camera" />
+    <permission name="record" />
+    <permission name="fileSystem" />
+    <permission name="internet" />
+    <permission name="bootCompleted" />
+    <permission name="hardware" />
+
+</widget>

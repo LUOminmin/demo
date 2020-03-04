@@ -1,0 +1,7 @@
+<div id="header" class="ui-header is-base" v-bind:class="{'isHome':isHome}">
+    <div v-touch:tap="onTitleTap" class="ui-header__title">{{title}}</div>
+    <div class="ui-header__rightBtn" v-touch:tap="onTapRightBtn" v-show="qrcodeShow">
+        <span class="header-qrCode" v-show="qrcodeShow"></span>
+        <span v-if="rightNum == 0 || !!rightNum">{{rightNum}}</span>
+    </div>
+</div>

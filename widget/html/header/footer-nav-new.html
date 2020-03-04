@@ -1,0 +1,8 @@
+<div id="footer" class="ui-footer">
+    <ul class="ui-footer__list">
+        <li class="ui-footer__item" v-for="(i,item) in list" v-touch:tap="onTap(i)" v-show="item.title!='商城' || showMallHelp">
+            <i class="ui-footer__icon ui-footer__icon_{{i + 1}}" v-bind:class="{'mallHelp':item.title=='商城','isSelect': active == i}"></i>
+            <span class="ui-footer__text ui-footer__text_{{i + 1}}" :class="{'isSelectText': active == i}">{{item.title}}</span>
+        </li>
+    </ul>
+</div>

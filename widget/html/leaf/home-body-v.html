@@ -1,0 +1,7 @@
+<div class="leaf_body">
+    <div v-for="(index,item) in list" class="leaf_item" v-touch:tap="goChild(item)">
+        <div class="leaf_left"></div>
+        <div class="leaf_text">{{item.task_config_menu_name}}</div>
+        <div class="leaf_right"></div>
+    </div>
+</div>

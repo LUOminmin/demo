@@ -1,0 +1,8 @@
+<div id="footer" class="member_footer">
+    <div class="footer_list">
+        <div class="footer_item" v-for="(i,item) in list" v-touch:tap="onTap(i)" v-show="item.isShow">
+            <div class="footer_icon footer_icon{{i + 1}}" v-bind:class="{'mallHelp':item.title=='商城','isSelect': active == i}"></div>
+            <div class="footer_text" :class="{'isSelectText': active == i}">{{item.title}}</div>
+        </div>
+    </div>
+</div>

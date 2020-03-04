@@ -1,0 +1,13 @@
+<div class="target-box-wrap">
+    <div class="target-box" v-for="(i, item) in list">
+        <div class="box-time">{{item.time | trans-theTime}}</div>
+        <div class="layer" v-touch:tap="goToPage(item.httpUrl, item.type, item.title)">
+            <div class="layer-left">
+                <div class="layer-title">{{item.title}}</div>
+                <div class="layer-article">{{item.text}}</div>
+            </div>
+            <img class="layer-img" :src="item.imgUrl">
+        </div>
+    </div>
+</div>
+<div class="loadmore ready hide"><i class="loading"></i></div>

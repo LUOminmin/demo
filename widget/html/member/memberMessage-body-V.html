@@ -1,0 +1,85 @@
+<div class="ui-member__themetitle">
+	<div class="ui-member__lefttitle" v-touch:tap='onListShow("sortListShow","typeListShow")'>
+		<div :class='{"active-sort": sortListShow,}'></div>
+		<span>排序</span>
+	</div>
+	<div class="ui-member__centertitle" v-touch:tap='onListShow("typeListShow","sortListShow")'>
+		<div :class='{"active-type": typeListShow,}'></div>
+		<span>用户类型</span>
+	</div>
+	<div class="ui-member__righttitle" v-touch:tap="onMemberFiller">
+		<i></i><span>筛选</span>
+	</div>
+</div>
+<ul class="sortList" v-show="sortListShow">
+	<li v-for="(i, item) in sortList" v-touch:tap="onSelect(item, sortList), onSort(item)">
+		<span :class='{"active-color": item.checked,}'>{{item.sortName}}</span>
+	</li>
+</ul>
+<div class="typeList-wrap" v-show="typeListShow">
+	<div class="typeList">
+		<ul class="typeList-key">
+			<li v-for="(i, item) in typeListKey" v-touch:tap="onSelect(item, typeListKey)">
+				<span class="typeList-key-item" :class='{"active-color": item.checked,}'>{{item.typeNameKey}}</span>
+				<div :class='{"active-tab-type": item.checked,}'></div>
+			</li>
+		</ul>
+		<ul class="typeList-value" v-for="(i, item) in typeListKey" v-show="item.checked">
+			<li v-for="(i1, item1) in item.typeListValue" v-touch:tap="onChecked(i1, item1, item.typeListValue)">
+				<span class="typeList-value-item" :class='{"active": item1.checked,}'>{{item1.typeNameValue}}</span>
+				<span v-show="item1.checked" class="gou"></span>
+				<span v-show="!item1.checked" class="meigou"></span>
+			</li>
+		</ul>
+		<div class="ensure-wrap">
+			<div class="reset" v-touch:tap="reset()">重置</div>
+			<div class="ensure" v-touch:tap="ensure()">完成</div>
+		</div>
+	</div>
+</div>
+<div class="ui-allDetails__noResultWrap" id="noResultWrap" v-show="isNoResult">
+	<!--isNoResult-->
+	<div class="ui-allDetails__noResult">
+		<i></i>
+		没有查到相关信息
+	</div>
+</div>
+<div class="ui-member__memberAll" v-show="!isNoResult" :class='{"ofh": maskShow,}'>
+	<div class="ui-member__memberList" v-for="(i,item) in list" v-touch:tap="onMerberItem(item.memberId)">
+		<div class="ui-member__ItemCenter">
+			<div class="ui-member__centerName fl" v-if="item.memberName">
+				{{item.memberName}}
+			</div>
+			<div class="ui-member__centersex fl" v-if="item.memberSex!=-2">
+				<i class="ui-member__centerman" v-if="item.memberSex==1"></i>
+				<i class="ui-member__centerwoman" v-if="item.memberSex==0"></i>
+			</div>
+			<div class="ui-member__centeryear fl" v-if="item.memberOld">
+				<span>{{item.memberOld}}</span>
+			</div>
+
+			<div class="ui-member__centerVIP fl" v-if="item.memberVip">
+				<img src="../../image/manager/v{{item.memberVip}}.png">
+			</div>
+			<div class="ui-member__centerIntegral fr">
+				积分<span>{{item.memberIntegral}}</span>
+			</div>
+		</div>
+		<div class="ui-member__memberItem">
+			<div class="ui-member__ItemLeft" v-if="item.memberPhone">
+				<i></i><span>{{item.memberPhone | encrept}}</span>
+			</div>
+			<div class="ui-member__Itemright" v-if="item.memberCard">
+				<i></i><span>{{item.memberCard}}</span>
+			</div>
+		</div>
+		<div class="ui-member__ItemCenterBtm clearfix">
+			<ul>
+				<li v-for="tag in item.tagList" v-if="item.tagList.length>0">{{tag.tag_name}}</li>
+				<span class="ui-member__tagListNo" v-if="item.tagList.length==0">无标签</span>
+			</ul>
+		</div>
+	</div>
+	<div class="loadmore ready hide"><i class="loading"></i></div>
+</div>
+<div v-show="maskShow" class="mask" @touchmove.prevent v-touch:tap='blur()'></div>

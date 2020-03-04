@@ -1,0 +1,124 @@
+<div class="main">
+	<div class="content">
+		<div v-if="showCoupon">
+			<ul>
+				<li v-for="(index, item) in list">
+					<div class="coupon-item" :class="{'active' : item.isSpread, 'selected' : item.selected, 'limited' : !item.is_receive}">
+						<div class="coupon-item-content" v-on:click.stop="onChangeSelectStatus(item)">
+							<!-- 卡券内容 -->
+							<div class="coupon-item-content-left">
+								<!-- 卡券金额 -->
+								<!-- <span class="coupon-item-content-left-money" style="font-size: 0.80rem; font-style: italic; font-family: 'Arial-BoldItalicMT';"><span style="font-size: 0.35rem; font-family: 'PingFang-SC-Bold'; font-style: normal;" v-show="item.count_rule_operation === 'AMOUNT'">￥</span>{{ item.value }}<span style="font-size: 0.29rem; font-style: normal;" v-show=" item.type === 'discount'">折</span></span> -->
+
+								<span class="coupon-item-content-left-money can-limit" v-if="item.count_rule_operation === 'AMOUNT'"><span style="font-size: 0.35rem; font-family: 'PingFang-SC-Bold'; font-style: normal;">￥</span>{{ item.count_rule_operation_val / 100 }}</span>
+
+								<span class="coupon-item-content-left-money can-limit" v-else>{{ item.count_rule_operation_val / 10 }}<span style="font-size: 0.29rem; font-style: normal;">折</span></span>
+								<br>
+								<span class="coupon-item-content-left-condition can-limit" style="margin-top: 0.20rem; font-size: 0.22rem; font-weight: 700;">{{ item.condition }}</span>
+							</div>
+							<div class="coupon-item-content-right">
+								<!-- 使用日期详情 -->
+								<div class="coupon-item-content-right-desc">
+									<div class="text-ellipsis coupon-item-content-right-desc-name can-limit" style="">
+										{{ item.coupon_title }}
+									</div>
+									<div class="can-limit" style="margin-top: 0.16rem; font-size: 0.24rem; color: #666;">
+										{{ item.use_rule_val }}
+									</div>
+								</div>
+								
+								<div class="line">
+									<!-- 虚线 -->
+								</div>
+								<div class="coupon-item-content-right-detailed">
+									<div style="text-align: left;" v-on:click.stop="onChangDetailedStatus(index, item)">
+										详情 <span class="look-detailed"></span>
+									</div>
+									<div class="" style="flex: 1; color: #ff003c; text-align: right;" v-if="!item.is_receive">
+										{{ item.reason_of_unreceive }}
+									</div>
+									<div style="flex: 1;" v-else>
+										
+									</div>
+								</div>
+							</div>
+
+							<div :class="{ 'selected' : item.selected }">
+								<!-- 是否选中 -->
+							</div>
+						</div>
+						<div class="coupon-item-desc">
+							<!-- 卡券描述 -->
+							<div class="coupon-item-desc-space"></div>
+							<div class="text-ellipsis coupon-item-desc-item"><!--  style="margin-top: 0.24rem; -->
+								适用商品：{{ item.goodScope | clearSign }}
+							</div>
+							<div class="text-ellipsis coupon-item-desc-item"><!--  style="margin-top: 0.24rem; -->
+								适用范围：{{ item.scope | clearSign }}
+							</div>
+							<div class="text-ellipsis coupon-item-desc-item">
+								说明：{{ item.explain }}
+							</div>
+							<div class="coupon-item-desc-space"></div>
+						</div>
+						
+					</div>
+				</li>
+			</ul>
+			<!-- <div class="loadmore ready hide"><i class="loading"></i></div> -->
+		</div>
+		<div class="none-coupon-able-dispatch" v-if="noneCouponDataStatus">
+			<i></i>
+			暂无可派送卡券
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footer-left">
+			<div class="footer-left-space"></div>
+			<div class="footer-left-selected-tips">
+				<!-- <span class="footer-left-selected"></span>&nbsp; -->
+				<span>已选择：<span style="color: #ff003c">{{ selectedAmount }}</span> 张</span>
+			</div>
+			<div class="footer-left-surplus-tips" v-if="is_limit"><!--  style="display: none;" -->
+				<!-- <span class="footer-left-tip"></span>&nbsp; -->
+				<span>今日剩余可派：</span><span style="color: #5cc9c2">{{ residual_dispensable_num }}张</span>
+			</div>
+			<div class="footer-left-space"></div>
+		</div>
+		<div class="footer-right">
+			<div class="able-dispatch" v-touch:tap="onDispatchCouupon" v-if="isAbleDispatchCoupon">
+				派券
+			</div>
+			<div class="forbid-dispatch" v-else>
+				超过当日上限
+			</div>
+		</div>
+	</div>
+
+	<!-- 提示部分 -->
+	<div class="main-tips" v-show="showDialog">
+		<!-- 遮罩层 -->
+		<div class="main-tips-dialog">
+			<!-- 提示框 -->
+			<div class="main-tips-dialog-space" v-if="is_limit">
+				<div class="main-tips-dialog-tips">
+					派券后将不能撤销，是否确定派发
+				</div>
+				<div class="main-tips-dialog-coupon">
+					今日还可派发 <span style="color: #ff003c;">{{ residual_dispensable_num }}</span> 张卡券
+				</div>
+			</div>
+
+			<!-- 不提示剩余可派发卡券数量 -->
+			<div class="main-tips-dialog-space" v-else>
+				<div class="main-tips-dialog-tips-one">
+					派券后将不能撤销，是否确定派发
+				</div>
+			</div>
+			<div class="main-tips-dialog-operate">
+				<span v-on:click.stop.prevent="onDialogCancel" style="color: #999;">取消</span>
+				<span style="color: #4bbdbd;" v-on:click.stop.prevent="onDialogEnter">确定</span>
+			</div>
+		</div>
+	</div>
+</div>

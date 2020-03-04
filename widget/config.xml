@@ -1,0 +1,70 @@
+<widget id="A6038769593008" version="0.0.1">
+    <name>小仙女</name>
+    <description>
+        Example For APICloud.
+    </description>
+    <author email="developer@apicloud.com" href="http://www.apicloud.com">
+        111
+    </author>
+    <!-- <content src="./index.html" /> -->
+       <content src="./dist/root.html"/>
+       <!-- <content src=" http://192.168.10.159:8080/root.html" /> -->
+    <access origin="*" />
+
+    <!-- <feature name="ajpush">
+        <param name="app_key" value="40205ec03f0d43bedba65aa2"/>
+        <param name="channel" value="qqbusiness"/>
+    </feature> -->
+
+    <feature name="aliPush"> 
+        <param name="AppKey_iOS" value="25121622"/>
+        <param name="AppSecret_iOS" value="8b1557c1a605c13ecf71cee73ff2cb9c"/>
+        <param name="AppKey_Android" value="25112419"/>
+        <param name="AppSecret_Android" value="b5f60f31903a065a2ac46d211881c8fb"/>
+        <param name="XmAppID" value="2882303761517834508"/>
+        <param name="XmAppKey" value="5481783478508"/>
+    </feature>
+
+    <feature name="qq">
+        <param name="urlScheme" value="tencent1105570159" />
+        <param name="apiKey" value="1105570159" />
+    </feature>
+    <feature name="wx">
+        <param name="urlScheme" value="wx4642fbe826742840"/>
+        <param name="apiKey" value="wx4642fbe826742840"/>
+        <param name="apiSecret" value="6082a6fdfb7e485bdbbbd99d4d8236cb"/>
+    </feature>
+    <feature name="TalkingData">
+        <param name="logEnable" value="false" />
+        <param name="exceptionReportEnabled" value="true" />
+        <param name="channel" value="AppStore" />
+    </feature>
+
+    <preference name="pageBounce" value="false" />
+    <preference name="appBackground" value="rgba(0,0,0,0.0)" />
+    <preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
+    <preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>
+    <preference name="hScrollBarEnabled" value="true" />
+    <preference name="vScrollBarEnabled" value="true" />
+    <preference name="autoLaunch" value="true" />
+    <preference name="fullScreen" value="false" />
+    <preference name="autoUpdate" value="true" />
+    <preference name="smartUpdate" value="true" />
+    <preference name="debug" value="true" />
+    <preference name="statusBarAppearance" value="true" />
+    <preference name="backgroundMode" value="remote-notification"/>
+    <preference name="softInputMode" value="resize"/>
+    <preference name="iOS7StatusBarAppearance" value="true"/>
+    <preference name="urlScheme" value="bosshelp" />
+
+
+
+    <permission name="readPhoneState" />
+    <permission name="camera" />
+    <permission name="record" />
+    <permission name="fileSystem" />
+    <permission name="internet" />
+    <permission name="bootCompleted" />
+    <permission name="hardware" />
+
+</widget>

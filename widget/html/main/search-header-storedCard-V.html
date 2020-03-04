@@ -1,0 +1,9 @@
+<div id="header" class="ui-header is-search" style="overflow-x: hidden;">
+    <div class="ui-header__leftBtn" v-touch:tap="onTapLeftBtn">
+        <i class="is-arrow" style="left: 0;"></i>
+    </div>
+    <div class="ui-header__input" style="margin-left: 0.3rem;">
+        <input type="search" v-on:keyup.enter="search" v-on:input="onSearchInput" v-on:blur="changeText" v-model="searchText" placeholder="请输入内容">
+        <i v-touch:tap="onClearTextTap" v-if="searchText"></i>
+    </div>
+</div>

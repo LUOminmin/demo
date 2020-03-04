@@ -1,0 +1,57 @@
+<div class="noResult" v-if="noResult">
+        <v-nodata></v-nodata>
+</div>
+<div class="ui-messageCenter__wrapper" v-if="!noResult">
+        <div class="ui-messageCenter__block ui-messageCenter__block__first" v-touch:tap="onMeiQia()">
+                <div class="ui-messageCenter__icon">
+                        <div class="ui-messageCenter__imgOne"></div>
+                        <div class="ui-messageCenter__num" v-if="noteCount">{{noteCount}}</div>
+                </div>
+                <div class="ui-messageCenter__text">
+                        <span class="ui-messageCenter__textOne">在线客服</span>
+                        <span class="ui-messageCenter__textTwo">咨询时间 08:00~21：00</span>
+                </div>
+                <i class="ui-messageCenter__iconRight"></i>
+        </div>
+</div>
+<div class="ui-messageCenter__wrapper" v-if="!noResult">
+        <div class="ui-messageCenter__block" v-touch:tap="ontargetManage()">
+                <div class="border"></div>
+                <div class="ui-messageCenter__icon">
+                        <div class="ui-messageCenter__imgThree"></div>
+                </div>
+                <div class="ui-messageCenter__text">
+                        <span class="ui-messageCenter__textOne">目标管理</span>
+                        <span class="ui-messageCenter__textTwo">{{target_title}}</span>
+                </div>
+                <i class="ui-messageCenter__iconRight"></i>
+        </div>
+</div>
+<div class="ui-messageCenter__wrapper" v-if="!noResult">
+        <div class="ui-messageCenter__block" v-touch:tap="onseviceNotice()">
+                <div class="border">
+                </div>
+                <div class="ui-messageCenter__icon">
+                        <div class="ui-messageCenter__imgTwo"></div>
+                        <div class=""></div>
+                </div>
+                <div class="ui-messageCenter__text">
+                        <span class="ui-messageCenter__textOne">服务通知</span>
+                        <span class="ui-messageCenter__textTwo">功能开发中，敬请期待</span>
+                </div>
+                <i class="ui-messageCenter__iconRight"></i>
+        </div>
+</div>
+<div class="ui-messageCenter__wrapper" v-if="!noResult">
+        <div class="ui-messageCenter__block" v-touch:tap="onthemeCare()">
+                <div class="ui-messageCenter__icon">
+                        <div class="ui-messageCenter__imgFour"></div>
+                        <div class=""></div>
+                </div>
+                <div class="ui-messageCenter__text">
+                        <span class="ui-messageCenter__textOne">主题关怀</span>
+                        <span class="ui-messageCenter__textTwo">功能开发中，敬请期待</span>
+                </div>
+                <i class="ui-messageCenter__iconRight"></i>
+        </div>
+</div>

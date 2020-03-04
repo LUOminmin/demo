@@ -1,0 +1,518 @@
+/*!
+
+Lego纯CSS自适应方案
+
+1，设计稿尺寸
+
+    默认设计稿宽带 750px，可通过变量 $psd-size 进行修改
+
+2，对应的 meta 标签写法：
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+3，px to rem 需要用到小学算术
+
+    100px = 1rem / 1px = 0.01rem
+
+Notes:
+
+    断点参考：http://screensiz.es/phone
+
+    横屏断点：384px, 480px, 533px, 568px, 640px, 667px, 736px
+    某些手机厂商系统的虚拟SmartBar会改变Screen的值，又是坑，建议统一横屏提示规避
+
+    避免使用 min-device-width
+    https://developers.google.com/web/fundamentals/design-and-ui/responsive/fundamentals/use-media-queries?hl=zh-cn#min-device-width-
+
+*/
+@media only screen and (min-width: 320px) {
+  html {
+    font-size: 42.66667px; } }
+
+@media only screen and (min-width: 360px) {
+  html {
+    font-size: 48px; } }
+
+@media only screen and (min-width: 375px) {
+  html {
+    font-size: 50px; } }
+
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 53.33333px; } }
+
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 55.2px; } }
+
+/* @name: 转为REM单位fn
+ * @ps: 默认宽度为750px
+ */
+/* @name: 上下左右居中 (未知高度)
+ * @ps: 需要设置父元素 display:table
+ */
+/* @name: 上下左右居中 （确定高度）*/
+/*
+ * @name: 文字溢出显示省略号
+ * @ps: 需要设置宽度
+ */
+/* @name: 强制不换行 */
+/* @name: 清除浮动 */
+/*
+ * @name:  三角形
+ * @param: $size  大小
+ * @param: $color 颜色
+ * @param: $type {string}  类型 (up || down || left || right || topleft || topright || bottomleft || bottomright)
+ */
+/* 全局设置 */
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  font-family: "苹方","Microsoft YaHei",Helvetica, "Droid Sans", sans-serif;
+  font-weight: 300;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent; }
+
+/* 设置基本html,body样式 */
+html, body {
+  margin: 0 auto;
+  padding: 0; }
+
+/* 设置图片最大宽度 */
+img {
+  max-width: 100%; }
+
+/* 清除默认按钮表现形式 */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  cursor: pointer; }
+
+/*	清楚表单的默认样式 */
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+  -webkit-appearance: none; }
+
+input {
+  -webkit-appearance: none;
+  appearance: none; }
+
+/* 设置表格默认样式 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* 文本域禁止拖拉放大 */
+textarea {
+  resize: none; }
+
+a {
+  text-decoration: none;
+  color: currentColor; }
+
+img {
+  vertical-align: top; }
+
+i, em {
+  font-style: normal; }
+
+ol, ul, li, menu {
+  list-style: none outside none; }
+
+fieldset, iframe, abbr, acronym {
+  border: 0 none; }
+
+dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td, hr,
+article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0; }
+
+del {
+  text-decoration: line-through; }
+
+/* @name: 转为REM单位fn
+ * @ps: 默认宽度为750px
+ */
+/* @name: 上下左右居中 (未知高度)
+ * @ps: 需要设置父元素 display:table
+ */
+/* @name: 上下左右居中 （确定高度）*/
+/*
+ * @name: 文字溢出显示省略号
+ * @ps: 需要设置宽度
+ */
+/* @name: 强制不换行 */
+/* @name: 清除浮动 */
+/*
+ * @name:  三角形
+ * @param: $size  大小
+ * @param: $color 颜色
+ * @param: $type {string}  类型 (up || down || left || right || topleft || topright || bottomleft || bottomright)
+ */
+/* 主色调 */
+/* 辅助色 */
+/* 标题栏背景色 */
+/* 页面背景色 */
+/* 分隔线颜色 */
+/* 字体主色 */
+/* 字体辅助色 */
+/* 一级标题 */
+/* 二级标题 */
+/* 三级标题 */
+/* 正文 */
+/* 说明文字 */
+/* 导航字体 */
+/* 按钮圆角 */
+/* 遮罩透明度 */
+html,
+body {
+  height: 100%;
+  line-height: 1;
+  font-size: 0.28rem;
+  font-family: 'PingFang-SC-Medium';
+  color: #333;
+  background-color: #f2f2f2;
+  -webkit-tap-highlight-color: transparent; }
+
+.text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.main {
+  position: relative;
+}
+.content {
+  padding-bottom: 1.36rem;
+  overflow-y: hidden;
+}
+.none-coupon-able-dispatch {
+  position: absolute;
+  width: 3rem;
+  padding-top: 3.1rem;
+  top: 3.1rem;
+  text-align: center;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+     -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+       -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.none-coupon-able-dispatch > i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3rem;
+    height: 3rem;
+    background-image: url("../../image/boss/noResult.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 100%;
+       -moz-background-size: 100% 100%;
+         -o-background-size: 100% 100%;
+            background-size: 100% 100%; 
+}
+.coupon-item {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.20rem;
+  position: relative;
+}
+.coupon-item .selected {
+  width: 0.48rem;
+  height: 0.48rem;
+  position: absolute;
+  right: 0.18rem;
+  bottom: 0;
+  background: url(../../image/member/xuanzhong.png);
+  background-size: 100% 100%;
+}
+.coupon-item.limited {
+
+}
+.coupon-item.limited .can-limit {
+  color: #999;
+}
+
+.coupon-item-content {
+  width: 7.5rem;
+  height: 2.20rem;
+  display: flex;
+  position: relative;
+  background: url(../../image/member/coupon_bg.png);
+  background-size: 100% 100%;
+  z-index: 999;
+}
+.coupon-item-content-left {
+  width: 2.65rem;
+  color: #4bbdbd;
+}
+.coupon-item-content-left-money {
+  display: inline-block;
+  width: 2.51rem;
+  margin-top: 0.50rem;
+  margin-left: 0.22rem;
+  font-size: 0.80rem;
+  font-style: italic; 
+  font-family: 'Arial-BoldItalicMT';
+  font-weight: 700;
+  text-align: center;
+}
+.coupon-item-content-left-condition {
+  display: inline-block;
+  width: 2.51rem;
+  margin-left: 0.22rem;
+  text-align: center;
+}
+.coupon-item-content-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.19rem;
+}
+.coupon-item-content-right-desc {
+  height: 1.50rem;
+}
+.coupon-item-content-right-desc-name {
+  width: 4.47rem;
+  /*margin-right: 0.18rem;*/
+  /*background-color: red;*/
+  /*margin-top: 0.38rem; */
+  padding-top: 0.38rem;
+  font-size: 0.30rem; 
+  color: #000; 
+  font-weight: 700;
+}
+.coupon-item-content-right .line {
+  width: 4.02rem;
+  height: 1px;
+  background: url(../../image/member/line.png) center center no-repeat;
+  background-size: 100% 100%;
+  transform: scaleY(0.5);
+}
+.coupon-item-content-right-detailed {
+  height: 0.69rem;
+  margin-right: 0.63rem;
+  display: flex;
+  justify-content: space-around;
+  line-height: 0.69rem;
+}
+.coupon-item-content-right-detailed > div {
+  display: inline-block;
+}
+.look-detailed {
+  display: inline-block;
+  width: 0.12rem;
+  height: 0.08rem;
+  position: relative;
+  top: -0.05rem;
+  background: url(../../image/member/top_jiantou.png);
+  background-size: 100% 100%;
+}
+.coupon-item.active .look-detailed {
+  background: url(../../image/member/bottom_jiantou.png);
+  background-size: 100% 100%;
+}
+.coupon-item-content-right-detailed div {
+
+}
+.coupon-item-content-right-detailed i {
+  background: url(../../image/member/bottom_jiantou.png);
+  background-size: 100% 100%;
+}
+.coupon-item.active .coupon-item-desc {
+  display: flex;
+}
+.coupon-item-desc {
+  width: 7.5rem;
+  height: 1.40rem;
+  position: relative;
+  top: -0.08rem;
+  /*margin: 0 0.18rem 0 0.22rem;*/
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  /*background-color: rgba(211, 211, 211, 0.14);*/
+  /*此处应有背景图*/
+  background: url(../../image/member/detailed140.png);
+  background-size: 100% 100%;
+  font-family: "PingFang-SC-Medium";
+  font-size: 0.22rem;
+  font-weight: 700;
+  color: #666;
+  z-index: 9;
+  /*阴影效果*/
+  box-shadow: inset 0 0.08rem 0.50rem 0.20rem rgba(211, 211, 211, 0.14);
+
+  overflow: hidden;
+}
+.coupon-item-desc div:first-child {
+  margin-top: 0.08rem;
+}
+.coupon-item-desc-item {
+  flex: 1;
+  margin-right: 0.22rem;
+  margin-left: 0.50rem;
+  line-height: 0.32rem;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.coupon-item-desc-space {
+  height: 0.18rem;
+}
+.footer {
+  height: 1.18rem;
+  display: flex;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 1000;
+}
+.footer-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.50rem;
+}
+.footer-left-space {
+  height: 0.20rem;
+}
+.footer-left-selected-tips {
+  flex: 1;
+  /*margin-top: 0.28rem;*/
+  display: flex;
+  align-items: center;
+}
+.footer-left-surplus-tips {
+  flex: 1;
+  /*margin-top: 0.16rem;*/
+  display: flex;
+  align-items: center;
+}
+.footer-left-selected {
+  display: inline-block;
+  width: 0.18rem;
+  height: 0.18rem;
+  background: url(../../image/member/selected.png);/* center center no-repeat*/
+  background-size: 100% 100%;
+}
+.footer-left-tip {
+  display: inline-block;
+  width: 0.18rem;
+  height: 0.18rem;
+  background: url(../../image/member/tips.png);
+  background-size: 100% 100%;
+}
+.footer-right {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.footer-right .able-dispatch {
+  width: 3.20rem; 
+  height: 0.92rem;
+  margin-top: 0.19rem;
+  margin-right: 0.28rem;
+  background: url(../../image/member/pai_button.png);
+  background-size: 100% 100%;
+  font-size: 0.32rem;
+  line-height: 0.87rem;
+  text-align: center;
+  color: #fff;
+  border-radius: 0.07rem;
+}
+.footer-right .forbid-dispatch {
+  width: 3.20rem; 
+  height: 0.80rem;
+  margin-top: 0.20rem;
+  margin-right: 0.28rem;
+  /*background: url(../../image/member/pai_button.png);*/
+  /*background-size: 100% 100%;*/
+  background-color: #ccc;
+  font-size: 0.32rem;
+  line-height: 0.825rem;
+  text-align: center;
+  color: #fff;
+  border-radius: 0.07rem;
+}
+/*提示框样式*/
+.main-tips {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+}
+.main-tips-dialog {
+  width: 6.00rem;
+  height: 3.08rem;
+  margin-left: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  font-weight: 700;
+  border-radius: 0.15rem;
+}
+.main-tips-dialog-space {
+  flex: 1;
+  display: flex;
+  /*align-items: center;*/
+  flex-direction: column;
+  /*background-color: #123456;*/
+}
+.main-tips-dialog-tips {
+  margin-top: 0.52rem;
+  margin-left: 0.36rem;
+  font-size: 0.32rem;
+  font-weight: 700;
+}
+.main-tips-dialog-tips-one {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.32rem;
+  font-weight: 700;
+}
+.main-tips-dialog-coupon {
+  margin-top: 0.40rem;
+  margin-left: 0.36rem;
+  font-size: 0.26rem;
+  color: #666;
+}
+.main-tips-dialog-operate {
+  height: 0.70rem;
+  display: flex;
+  /*align-items: center;*/
+  justify-content: space-between;
+  margin: 0 0.58rem;
+  font-size: 0.28rem;
+  font-weight: 900;
+  /*background-color: red;*/
+}
+.main-tips-dialog-operate > span {
+  display: inline-block;
+}

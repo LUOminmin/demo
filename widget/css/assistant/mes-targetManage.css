@@ -1,0 +1,71 @@
+body {
+    background-color: #f6f6f6;
+}
+
+.target-box-wrap {
+    width: 100%;
+    background-color: #f6f6f6;
+    padding: 0 0.3rem 0.4rem 0.3rem;
+}
+
+.target-box {
+    text-align: center;
+}
+
+.box-time {
+    background-color: #c5c5c5;
+    padding: 0.09rem 0.2rem;
+    margin: 0.4rem auto 0.2rem auto;
+    height: 0.41rem;
+    border-radius: 0.05rem;
+    font-size: 0.24rem;
+    color: #fff;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.layer {
+    height: 1.6rem;
+    background-color: #fff;
+    padding: 0.3rem;
+    border-radius: 0.05rem;
+    box-shadow: 0 0 0.3rem #dcdcdc;
+        -webkit-box-shadow: 0 0 0.5rem #dcdcdc;
+        -moz-box-shadow: 0 0 0.5rem #dcdcdc;
+        -o-box-shadow:0 0 0.5rem #dcdcdc;
+}
+
+.layer-title {
+    font-size: 0.32rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.layer-article {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.24rem;
+    color: #999999;
+}
+
+.layer-left {
+    float: left;
+    text-align: left;
+    width: 5rem;
+}
+
+.layer-img {
+    float: right;
+    width: 1rem;
+    height: 1rem;
+    -webkit-background-size: 100% 100%;
+     -moz-background-size: 100%;
+       -o-background-size: 100%;
+          background-size: 100%;
+    border-radius: 0.1rem;
+}

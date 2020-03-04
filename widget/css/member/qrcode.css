@@ -1,0 +1,86 @@
+.container {
+    padding: 0.5rem .4rem 0 .4rem;
+    background-color: #F8F8F8;
+    height: 100%;
+}
+
+h1 {
+    font-size: .36rem;
+    font-weight: bolder;
+    margin-bottom: 0.5rem;
+}
+
+.qrcode-wrap {
+    height: 8.78rem;
+    background-color: #fff;
+    padding: 0.4rem;
+}
+
+.member-head {
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+.member-mes {
+    display: inline-block;
+    margin: .3rem 0 0 .3rem;
+}
+
+.member-name {
+    font-weight: bold;
+    font-size: 0.36rem;
+}
+
+.company-name {
+    font-size: 0.24rem;
+    margin-top: .1rem;
+}
+
+.qrcode {
+    display: block;
+    width: 4.6rem;
+    height: 4.6rem;
+    margin: 1rem auto 0 auto;
+}
+
+.tips-wrap {
+    margin-top: 0.5rem;
+    font-size: .24rem;
+    text-align: center;
+}
+
+.tips {
+    color: #666;
+}
+
+.store-name {
+    color: #4cbdbe;
+}
+
+.btn-wrap {
+    margin-top: 0.4rem;
+}
+
+.save {
+    width: 3.16rem;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    color: #666;
+    background-color: #fff;
+    text-align: center;
+    font-size: 0.32rem;
+    border-radius: 0.1rem;
+    float: left;
+}
+
+.share {
+    width: 3.16rem;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    color: #fff;
+    background-color: #4cbdbe;
+    text-align: center;
+    font-size: 0.32rem;
+    border-radius: 0.1rem;
+    float: right;
+}

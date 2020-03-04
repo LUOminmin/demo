@@ -1,0 +1,99 @@
+<div class="ui-themeName__lineBar">
+    <div class="ui-themeName__lineBarTime" v-if="careId==7" v-touch:tap="openSelector">
+        <span>{{selectorValue}}</span>
+        <i v-bind:class="{'ui-rightIconUp':ifSelect,'ui-rightIconDown':!ifSelect}"></i>
+    </div>
+    <!-- <div class="ui-themeName__lineBarTime" v-else>
+        最近回访时间
+    </div> -->
+    <div class="ui-member__lefttitle" v-touch:tap='onListShow("sortListShow","typeListShow")' v-if="careId!=7">
+		<!-- <i v-show="sortListShow"></i>
+        <i v-show="!sortListShow"></i> -->
+        <div :class='{"active-sort": sortListShow,}'></div>
+		<span>排序</span>
+	</div>
+	<div class="ui-member__centertitle" v-touch:tap='onListShow("typeListShow","sortListShow")' v-if="careId!=7">
+		<!-- <i v-show="typeListShow"></i>
+        <i v-show="!typeListShow"></i> -->
+        <div :class='{"active-type": typeListShow,}'></div>
+		<span>用户类型</span>
+	</div>
+    <div class="ui-themeName__lineBarShort" v-touch:tap="openDrawer" :class='{"w33": careId!=7}'>
+        <i></i>
+        筛选
+    </div>
+    <div class="selector-2 ui-line-wrap" v-show="ifSelect">
+        <p class="pd02" v-touch:tap="selectStatus('未提醒',1)" v-bind:class="{'sel-active': selItem1}">未提醒</p>
+        <div class="ui-line-wrap"></div>
+        <p class="pd02" v-touch:tap="selectStatus('已提醒',2)" v-bind:class="{'sel-active': selItem2}">已提醒</p>
+        <div class="ui-line-wrap"></div>
+        <p class="pd02" v-touch:tap="selectStatus('不限',3)" v-bind:class="{'sel-active': selItem3}">不限</p>
+    </div>
+</div>
+<div class="maskLayer-2" v-show="ifSelect"></div>
+<ul class="sortList" v-show="sortListShow">
+        <li v-for="(i, item) in sortList" v-touch:tap="onSelect(item, sortList),onFold(), onSort(item)">
+            <span :class='{"active-color": item.checked,}'>{{item.sortName}}</span>
+            <!-- <span v-show="item.checked" class="gou"></span> -->
+        </li>
+</ul>
+    <div class="typeList-wrap" v-show="typeListShow">
+        <div class="typeList">
+            <ul class="typeList-key">
+                <li v-for="(i, item) in typeListKey" v-touch:tap="onSelect(item, typeListKey)">
+                    <span class="typeList-key-item" :class='{"active-color": item.checked,}'>{{item.typeNameKey}}</span>
+                    <div :class='{"active-tab-type": item.checked,}'></div>
+                    <!-- <span v-show="item.checked" class="rightIcon"></span> -->
+                </li>
+            </ul>
+            <ul class="typeList-value" v-for="(i, item) in typeListKey" v-show="item.checked">
+                <li v-for="(i1, item1) in item.typeListValue" v-touch:tap="onChecked(i1, item1, item.typeListValue)">
+                    <span class="typeList-value-item" :class='{"active": item1.checked,}'>{{item1.typeNameValue}}</span>
+                    <span v-show="item1.checked" class="gou"></span>
+                    <span v-show="!item1.checked" class="meigou"></span>
+                </li>
+            </ul>
+            <div class="ensure-wrap">
+                <div class="reset" v-touch:tap="reset()">重置</div>
+                <div class="ensure" v-touch:tap="ensure()">完成</div>
+            </div>
+        </div>
+    </div>
+<div class="ui-allDetails__noResultWrap" id="noResultWrap" v-show="isNoResult"><!--isNoResult-->
+    <div class="ui-allDetails__noResult" >
+        <i></i>
+        没有查到相关信息
+    </div>
+</div>
+<ul v-show="!isNoResult">
+    <li class="ui-themeName__itemWrap" v-for="(i,item) in list" style="top: 1.2rem;">
+        <div class="ui-themeName__tittle">
+			<span class="ui-themeName__phone" v-touch:tap="onMerberItem(item.user_id,i)">
+				<i class="ui-themeName__icon">{{item.num}}</i>
+				手机 {{item.tel | encrept}}
+			</span>
+
+            <p class="ui-themeName__entering" v-touch:tap="onThemeInput(i, item.user_id)" v-if="!item.themeEnd">回访</p>
+
+            <p v-bind:class="{ 'ui-themeName__visit' : !item.hasRecall , 'ui-themeName__visitBox': item.hasRecall }"
+               v-touch:tap="onReturnRecord(item.hasRecall,i)">{{item.hasRecall | toBtn}}</p>
+
+        </div>
+        <div class="ui-theme__progressBarWrap" v-touch:tap="onMerberItem(item.user_id,i)">
+            <p class="ui-theme__userName">
+
+                <span v-if="item.uName">姓名</span> {{item.uName | strName}}
+
+            </p>
+
+            <p class="ui-theme__cardId" v-if="item.cardId"><span>卡号</span> {{item.cardId}}</p>
+
+            <p class="ui-theme__time" v-if="item.hasRecall"><span>回访时间</span> {{item.recallTime}}</p>
+        </div>
+    </li>
+
+</ul>
+<div class="loadmore ready hide"><i class="loading"></i></div>
+<div v-show="maskShow" class="mask" @touchmove.prevent v-touch:tap='blur()'></div>
+
+

@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no,minimum-scale=1,maximum-scale=1"><title>vue-for-apicloud</title><script>window.isPc = function() {
+          
+            // windows PC端访问
+            if(navigator.platform.toLowerCase().indexOf("win")==0) return true;
+            
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            // console.log(JSON.stringify(navigator.userAgent.toLowerCase()));
+            //mozilla/5.0 (linux; android 8.1.0; padt00 build/o11019; wv) applewebkit/537.36 (khtml, like gecko) version/4.0 chrome/62.0.3202.84 mobile safari/537.36
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        /*
+		会有多处地方通过window.apiready来加载,但window.apiready会被覆盖,导致只有最后定义的window.apiready有效
+		
+		所以这里对window中，apiready属性的存取操作进行拦截
+		1、如果是存操作的话，要存的是一个函数，会被保存到 funArr 数组中
+		2、如果是取操作，返回一个函数，在函数内将 funArr 保存的函数依次执行
+		3、以此实现window.qpiready可多处使用
+		*/
+      // var funArr = [];
+      // Object.defineProperty(window, 'apiready', {
+      //   get: function() {
+      //     return function() {
+      //       funArr.forEach(function (item) {
+      //         item();
+      //       });
+      //     };
+      //   },
+      //   set: function(newValue) {
+      //     if (newValue && typeof newValue === 'function') {
+      //       funArr.push(newValue);
+      //     }
+      //   },
+      //   enumerable: true,
+      //   configurable: true,
+      // })</script><script>/*
+		会有多处地方通过window.apiready来加载,但window.apiready会被覆盖,导致只有最后定义的window.apiready有效
+		
+		所以这里对window中，apiready属性的存取操作进行拦截
+		1、如果是存操作的话，要存的是一个函数，会被保存到 funArr 数组中
+		2、如果是取操作，返回一个函数，在函数内将 funArr 保存的函数依次执行
+		3、以此实现window.qpiready可多处使用
+		*/
+		var funArr = [];
+		Object.defineProperty(window, 'apiready', {
+			get: function() {
+				return function() {
+					funArr.forEach(function (item) {
+						item();
+					});
+				};
+			},
+			set: function(newValue) {
+				if (newValue && typeof newValue === 'function') {
+					funArr.push(newValue);
+				}
+			},
+			enumerable: true,
+			configurable: true,
+		})</script><script src=./loghub-tracking.js></script><style>/* reset */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      html {
+        -webkit-user-select: none;
+        user-select: none;
+        font-family: sans-serif;
+        -webkit-text-size-adjust: 100%;
+        -webkit-user-drag: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      html {
+        /* font-size: 15.625vw; */
+        font-size: 13.3333vw;
+      }
+      body {
+        width: 100%;
+        line-height: 1.7;
+        font-size: 0.26rem;
+        position: relative;
+        /* background-color:#f6f6f6; */
+        overflow-x: hidden;
+        overflow-y: auto;
+        color: #333333;
+      }
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      ul,
+      ol,
+      dd,
+      dl,
+      form {
+        margin: 0;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        vertical-align: top;
+        border: 0 ;
+      }
+      ul {
+        padding-left: 0;
+        list-style-type: none;
+      }
+      i,
+      em {
+        font-style: normal;
+      }
+      big {
+        font-size: 0.338rem;
+      }
+      small {
+        font-size: 0.2002rem;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      article,
+      aside,
+      dialog,
+      footer,
+      header,
+      section,
+      nav,
+      figure,
+      menu,
+      audio,
+      canvas,
+      progress,
+      video {
+        display: block;
+      }
+      input,
+      select,
+      button,
+      a,
+      textarea {
+        outline: 0;
+        margin: 0;
+        font-size: 100%;
+        border: 0;
+      }
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        background-color: transparent;
+      }
+      td,
+      th {
+        padding: 0;
+      }</style><link href=css/chunk-common.1930639f.css rel=preload as=style><link href=css/template.6872e903.css rel=preload as=style><link href=js/chunk-common.0e90b4f9.js rel=preload as=script><link href=js/chunk-vendors.8227eb36.js rel=preload as=script><link href=js/template.52b82cf0.js rel=preload as=script><link href=css/chunk-common.1930639f.css rel=stylesheet><link href=css/template.6872e903.css rel=stylesheet></head><body><noscript><strong>We're sorry but qqbibi-business-app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=js/chunk-vendors.8227eb36.js></script><script src=js/chunk-common.0e90b4f9.js></script><script src=js/template.52b82cf0.js></script></body></html>

@@ -1,0 +1,27 @@
+.leaf_body {
+    margin-top: .2rem;
+}
+.leaf_item {
+    height: 1.02rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+}
+.leaf_left {
+    width: .3rem;
+}
+.leaf_text {
+    flex: 1;
+    line-height: 1.07rem;
+    color: #333;
+    font-size: .3rem;
+    border-bottom: .01rem solid #e9e9e9;
+}
+.leaf_right {
+    width: .8rem;
+    background-image: url('../../image/memberRebuild/arrow2.png');
+    background-size: .26rem .36rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-bottom: .01rem solid #e9e9e9;
+}

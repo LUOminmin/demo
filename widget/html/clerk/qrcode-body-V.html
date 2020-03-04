@@ -1,0 +1,19 @@
+<div class="container">
+    <h1 v-show="!hideTopText">二维码会员</h1>
+    <div class="qrcode-wrap">
+        <img class="member-head" src="{{staff_head}}" alt="">
+        <div class="member-mes">
+            <div class="member-name">{{staff_name}}</div>
+            <div class="company-name">{{company_name}}</div>
+        </div>
+        <img class="qrcode" src="{{qrcode}}" alt="企业后台未设置电子会员卡，该功能暂无法使用">
+        <div class="tips-wrap">
+            <span class="tips">扫码注册会员</span>
+            <span class="store-name">{{store_name}}</span>
+        </div>
+    </div>
+    <div class="btn-wrap">
+        <div class="save" v-touch:tap="saveMediaToAlbum">保存到手机</div>
+        <div class="share" v-touch:tap="share">分享</div>
+    </div>
+</div>
